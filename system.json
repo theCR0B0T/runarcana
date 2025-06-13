@@ -1,7 +1,7 @@
 {
   "id": "runarcana",
   "title": "Runarcana RPG",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Sistema de RPG baseado no universo de Runeterra para Foundry VTT",
   "author": "CR0B0T",
   "compatibility": {
@@ -19,80 +19,7 @@
   ],
   "documentTypes": {
     "Actor": {
-      "character": {
-        "type": "character",
-        "data": {
-            "attributes": {
-            "strength": { "value": 10 },
-            "dexterity": { "value": 10 },
-            "constitution": { "value": 10 },
-            "intelligence": { "value": 10 },
-            "wisdom": { "value": 10 },
-            "charisma": { "value": 10 }
-            },
-            "level": 1,
-            "experience": {
-            "value": 0,
-            "next": 1000
-            },
-            "health": {
-            "value": 10,
-            "max": 10,
-            "temp": 0
-            },
-            "mana": {
-            "value": 5,
-            "max": 5
-            },
-            "defenses": {
-            "armor": 10,
-            "magicResist": 10,
-            "evasion": 10
-            },
-            "initiative": {
-            "value": 0
-            },
-            "speed": {
-            "base": 6,
-            "mod": 0,
-            "total": 6
-            },
-            "skills": {
-            "athletics": { "value": 0, "proficient": false },
-            "stealth": { "value": 0, "proficient": false },
-            "arcana": { "value": 0, "proficient": false },
-            "perception": { "value": 0, "proficient": false },
-            "persuasion": { "value": 0, "proficient": false },
-            "insight": { "value": 0, "proficient": false },
-            "survival": { "value": 0, "proficient": false }
-            },
-            "resources": {
-            "actionPoints": {
-                "value": 1,
-                "max": 1
-            },
-            "reaction": {
-                "used": false
-            }
-            },
-            "combat": {
-            "attackBonus": 0,
-            "damageBonus": 0,
-            "criticalThreshold": 20
-            },
-            "proficiencies": {
-            "weapons": [],
-            "armors": [],
-            "tools": []
-            },
-            "notes": {
-            "background": "",
-            "appearance": "",
-            "personality": "",
-            "traits": ""
-            }
-        }
-      },
+      "character": {},
       "monster": {},
       "npc": {}
     },
