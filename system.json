@@ -1,7 +1,7 @@
 {
   "id": "runarcana",
   "title": "Runarcana RPG",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Sistema de RPG baseado no universo de Runeterra para Foundry VTT",
   "author": "CR0B0T",
   "compatibility": {
@@ -18,16 +18,8 @@
       "path": "lang/pt-BR.json"
     }
   ],
-  "documentTypes": {
-    "Actor": {
-      "character": {},
-      "monster": {},
-      "npc": {}
-    },
-    "Item": {
-      "weapon": {}
-    }
-  },
+  "actorTypes": ["character", "monster", "npc"],
+  "itemTypes": ["weapon"],
   "packs": [],
   "system": {
     "initiative": "1d20 + @attributes.destreza.mod"
