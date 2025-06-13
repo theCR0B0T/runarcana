@@ -38,10 +38,10 @@ export class CharacterDataModel extends ImportantActorDataModel {
   static defineSchema() {
     const base = super.defineSchema();
 
-    base.resources.schema.mp = new SchemaField({
+    /*base.resources.schema.mp = new SchemaField({
       value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
       max: new NumberField({ required: true, integer: true, min: 0, initial: 10 })
-    });
+    });*/
 
     return {
       ...base,
