@@ -1,4 +1,4 @@
-import { CharacterDataModel, NPCDataModel } from "ActorDataModel.js";
+import { CharacterDataModel, NPCDataModel } from "module/ActorDataModel.js";
 
 class RunarcanaActorSheet extends ActorSheet {
   get template() {
@@ -18,13 +18,13 @@ Hooks.once("init", () => {
   //CONFIG.Actor.documentClass = Actor;
 
   // Configure System Data Models.
-  /*CONFIG.Actor.dataModels = {
+  CONFIG.Actor.dataModels = {
     character: CharacterDataModel,
     //monster: MonsterDataModel,
     npc: NPCDataModel
-  };*/
+  };
 
-  CONFIG.Actor.dataModels.character = ActorDataModel;
+  //CONFIG.Actor.dataModels.character = ActorDataModel;
 
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("runarcana", RunarcanaActorSheet, { types: ["character"], makeDefault: true });
