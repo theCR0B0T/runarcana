@@ -1,13 +1,118 @@
 <form class="sheet actor" autocomplete="off">
-  <header class="sheet-header">
-    <h1>
+  <header class="sheet-header flexrow">
+    <img src="{{actor.img}}" class="profile" />
+    <div class="char-details flexcol">
       <input name="name" type="text" value="{{actor.name}}" placeholder="Nome do Personagem"/>
-    </h1>
+      <input name="system.class" value="{{system.class}}" placeholder="Classe" />
+      <input name="system.level" value="{{system.level}}" placeholder="Nível" />
+      <input name="system.origin" value="{{system.origin}}" placeholder="Origem" />
+      <input name="system.region" value="{{system.region}}" placeholder="Região" />
+    </div>
   </header>
 
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">Atributos</a>
+    <a class="item" data-tab="skills">Perícias</a>
+    <a class="item" data-tab="combate">Combate</a>
+    <a class="item" data-tab="magia">Magia</a>
+    <a class="item" data-tab="inventario">Inventário</a>
+    <a class="item" data-tab="anotacoes">Anotações</a>
+  </nav>
+
   <section class="sheet-body">
-    <p><strong>Ficha correta</strong></p>
-    <p>Tipo: {{actor.type}}</p>
-    <p>PV: {{actor.system.resources.health.value}}</p>
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <div class="grid grid-3col">
+        {{#each system.attributes as |attr key|}}
+        <div class="attribute flexcol">
+          <label>{{key}}</label>
+          <input type="number" name="system.attributes.{{key}}.value" value="{{attr.value}}" />
+          <span>Mod: {{attr.mod}}</span>
+        </div>
+        {{/each}}
+      </div>
+      <hr/>
+      <div class="flexrow">
+        <label>PV</label>
+        <input type="number" name="system.resources.hp" value="{{system.resources.hp}}" />
+        <label>Mana</label>
+        <input type="number" name="system.resources.mp" value="{{system.resources.hp}}" />
+        <label>CA</label>
+        <input type="number" name="system.ca" value="{{system.ca}}" />
+        <label>Iniciativa</label>
+        <input type="number" name="system.iniciativa" value="{{system.abilities.dex.mod}}" />
+      </div>
+    </div>
+
+    <div class="tab skills" data-group="primary" data-tab="skills">
+      <div class="skills">
+        {{#each system.pericias as |skill key|}}
+        <div class="skill flexrow">
+          <label>{{key}}</label>
+          <input type="number" name="system.skills.{{key}}" value="{{skill.value}}" />
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="tab combate" data-group="primary" data-tab="combate">
+      <div class="flexrow">
+        <label>CD RUNAS</label>
+        <input type="number" name="system.cdRunas" value="{{system.cdRunas}}" />
+        <label>Acerto Runas</label>
+        <input type="number" name="system.acertoRunas" value="{{system.acertoRunas}}" />
+      </div>
+      <div>
+        <label>Resistências:</label>
+        {{#each system.resistencias as |res key|}}
+        <div class="resistencia">
+          <label>{{key}}</label>
+          <input type="text" name="system.resistencias.{{key}}" value="{{res}}" />
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="tab magia" data-group="primary" data-tab="magia">
+      <div class="flexrow">
+        <label>CD Magia</label>
+        <input type="number" name="system.cdMagia" value="{{system.cdMagia}}" />
+        <label>Acerto Magia</label>
+        <input type="number" name="system.acertoMagia" value="{{system.acertoMagia}}" />
+      </div>
+      <div>
+        <label>Slots de Magia:</label>
+        {{#each system.spells as |slot level|}}
+        <div class="spell-slot">
+          <label>Nível {{slot.level}}}</label>
+          <input type="number" name="system.spells.value" value="{{slot.value}}" />
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="tab inventario" data-group="primary" data-tab="inventario">
+      <div class="moedas flexrow">
+        <label>PC</label><input name="system.pc" value="{{system.pc}}" />
+        <label>PP</label><input name="system.pp" value="{{system.pp}}" />
+        <label>PE</label><input name="system.pe" value="{{system.pe}}" />
+        <label>PO</label><input name="system.po" value="{{system.po}}" />
+        <label>PL</label><input name="system.pl" value="{{system.pl}}" />
+      </div>
+      <div>
+        <label>Equipamentos</label>
+        <textarea name="system.equipamentos">{{system.equipamentos}}</textarea>
+      </div>
+    </div>
+
+    <div class="tab anotacoes" data-group="primary" data-tab="anotacoes">
+      <label>Alinhamento</label>
+      <input name="system.alinhamento" value="{{system.alinhamento}}" />
+      <label>Idiomas</label>
+      <input name="system.idiomas" value="{{system.idiomas}}" />
+      <label>Proficiencias</label>
+      <textarea name="system.proficiencias">{{system.proficiencias}}</textarea>
+      <label>História</label>
+      <textarea name="system.historia">{{system.historia}}</textarea>
+    </div>
   </section>
 </form>
