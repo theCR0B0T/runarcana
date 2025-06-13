@@ -1,4 +1,4 @@
-const { HTMLField, NumberField, SchemaField, StringField } = foundry.data.fields;
+const { HTMLField, NumberField, SchemaField, StringField, BooleanField } = foundry.data.fields;
 
 /* -------------------------------------------- */
 /*  Actor Models                                */
