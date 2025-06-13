@@ -79,15 +79,15 @@
         <label>Acerto Magia</label>
         <input type="number" name="system.acertoMagia" value="{{system.acertoMagia}}" />
       </div>
-      <div>
+      <!--div>
         <label>Slots de Magia:</label>
         {{#each system.spells as |slot level|}}
         <div class="spell-slot">
-          <label>Nível {{slot.level}}}</label>
-          <input type="number" name="system.spells.value" value="{{slot.value}}" />
+          <label>Nível {{level}}}</label>
+          <input type="number" name="system.spells.{{level}}" value="{{slot}}" />
         </div>
         {{/each}}
-      </div>
+      </div-->
     </div>
 
     <div class="tab inventario" data-group="primary" data-tab="inventario">
