@@ -1,0 +1,52 @@
+<form class="sheet actor" autocomplete="off">
+  <header class="sheet-header">
+    <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Nome do Personagem"/></h1>
+    <div class="resources grid-3col">
+      <div class="resource">
+        <label>Classe & Nível</label>
+        <input name="system.classeNivel" type="text" value="{{system.classeNivel}}" />
+      </div>
+      <div class="resource">
+        <label>Origem</label>
+        <input name="system.origem" type="text" value="{{system.origem}}" />
+      </div>
+      <div class="resource">
+        <label>Região</label>
+        <input name="system.regiao" type="text" value="{{system.regiao}}" />
+      </div>
+    </div>
+  </header>
+
+  <section class="sheet-body">
+    <div class="attributes grid-6col">
+      {{#each system.atributos as |attr key|}}
+        <div class="attribute">
+          <label>{{key}}</label>
+          <input type="number" name="system.atributos.{{key}}.value" value="{{attr.value}}" />
+          <span>Mod: {{attr.mod}}</span>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="skills">
+      <h2>Perícias</h2>
+      {{#each system.pericias as |skill key|}}
+        <div class="skill">
+          <label>{{key}}</label>
+          <input type="number" name="system.pericias.{{key}}" value="{{skill}}" />
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="combat">
+      <label>CA</label>
+      <input type="number" name="system.ca" value="{{system.ca}}" />
+
+      <label>PV</label>
+      <input type="number" name="system.pv" value="{{system.pv}}" />
+
+      <label>Mana</label>
+      <input type="number" name="system.mana" value="{{system.mana}}" />
+    </div>
+  </section>
+</form>
