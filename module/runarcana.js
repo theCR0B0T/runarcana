@@ -5,7 +5,11 @@ class RunarcanaActorSheet extends ActorSheet {
 
   getData() {
     const data = super.getData();
-    return data;
+
+    return mergeObject(context, {
+      actor: this.actor,
+      system: this.actor.system
+    });
   }
 }
 
