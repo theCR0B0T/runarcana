@@ -1,4 +1,4 @@
-import { CharacterDataModel, NPCDataModel } from "module/ActorDataModel.js";
+import { CharacterDataModel, NPCDataModel } from "./ActorDataModel.js";
 
 class RunarcanaActorSheet extends ActorSheet {
   get template() {
