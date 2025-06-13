@@ -1,6 +1,6 @@
 class RunarcanaActorSheet extends ActorSheet {
   get template() {
-    return "templates/sheets/actor-sheet.html";
+    return `templates/sheets/character-sheet.html`;
   }
 
   getData() {
