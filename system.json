@@ -1,14 +1,14 @@
 {
   "id": "runarcana",
   "title": "Runarcana RPG",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Sistema de RPG baseado no universo de Runeterra para Foundry VTT",
   "author": "CR0B0T",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
   },
-  "esmodules": ["module/runarcana.js"],
+  "esmodules": ["module/runarcana.js", "module/ActorDataModel.js"],
   "styles": ["styles/runarcana.css"],
   "languages": [
     {

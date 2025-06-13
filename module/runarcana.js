@@ -15,14 +15,16 @@ class RunarcanaActorSheet extends ActorSheet {
 Hooks.once("init", () => {
   console.log("Runarcana | Inicializando o sistema Runarcana...");
 
-  CONFIG.Actor.documentClass = Actor;
+  //CONFIG.Actor.documentClass = Actor;
 
   // Configure System Data Models.
-  CONFIG.Actor.dataModels = {
+  /*CONFIG.Actor.dataModels = {
     character: CharacterDataModel,
     //monster: MonsterDataModel,
     npc: NPCDataModel
-  };
+  };*/
+
+  CONFIG.Actor.dataModels.character = ActorDataModel;
 
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("runarcana", RunarcanaActorSheet, { types: ["character"], makeDefault: true });
