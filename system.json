@@ -1,7 +1,7 @@
 {
   "id": "runarcana",
   "title": "Runarcana RPG",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Sistema de RPG baseado no universo de Runeterra para Foundry VTT",
   "author": "CR0B0T",
   "compatibility": {
@@ -19,7 +19,7 @@
   ],
   "documentTypes": {
     "Actor": {
-      "hero": {},
+      "character": {},
       "monster": {},
       "npc": {}
     },
