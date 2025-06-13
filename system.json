@@ -3,9 +3,9 @@
   "title": "Runarcana RPG",
   "version": "0.1.0",
   "description": "Sistema de RPG baseado no universo de Runeterra para Foundry VTT",
-  "author": "Seu Nome",
+  "author": "CR0B0T",
   "compatibility": {
-    "minimum": "11",
+    "minimum": "13",
     "verified": "13"
   },
   "esmodules": ["module/runarcana.js"],
@@ -20,5 +20,8 @@
   "packs": [],
   "system": {
     "initiative": "1d20 + @attributes.destreza.mod"
-  }
+  },
+  "url": "https://github.com/theCR0B0T/runarcana",
+  "manifest": "https://raw.githubusercontent.com/theCR0B0T/runarcana/refs/heads/main/system.json",
+  "download": "https://github.com/theCR0B0T/runarcana/archive/refs/heads/main.zip"
 }
