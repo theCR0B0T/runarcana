@@ -1,118 +1,175 @@
-<form class="sheet actor" autocomplete="off">
-  <header class="sheet-header flexrow">
-    <img src="{{actor.img}}" class="profile" />
-    <div class="char-details flexcol">
-      <input name="name" type="text" value="{{actor.name}}" placeholder="Nome do Personagem"/>
-      <input name="system.class" value="{{system.class}}" placeholder="Classe" />
-      <input name="system.level" value="{{system.level}}" placeholder="Nível" />
-      <input name="system.origin" value="{{system.origin}}" placeholder="Origem" />
-      <input name="system.region" value="{{system.region}}" placeholder="Região" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ficha Runarcana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0e1a22;
+      color: #f0e6d2;
+      font-family: 'Cinzel', serif;
+      padding: 20px;
+    }
+    .sheet {
+      border: 2px solid #bfa87a;
+      background: #15232d;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #bfa87a;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .header img {
+      border: 3px solid #bfa87a;
+      border-radius: 50%;
+      width: 96px;
+      height: 96px;
+    }
+    .header-info {
+      margin-left: 20px;
+    }
+    .header-info h1 {
+      font-size: 28px;
+      color: #dfa65b;
+    }
+    .header-info h2 {
+      font-size: 22px;
+      color: #f0e6d2;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .tabs a {
+      background: #6a1b1b;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      border: 2px solid #bfa87a;
+      border-radius: 6px 6px 0 0;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+    .tabs a.active {
+      background: #bfa87a;
+      color: #0e1a22;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .stat-block {
+      background: #243746;
+      border: 1px solid #bfa87a;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .resources, .passives {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .resources div, .passives div, .saves div {
+      flex: 1;
+      padding: 10px;
+      background: #243746;
+      margin: 5px;
+      text-align: center;
+      border: 1px solid #bfa87a;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="header">
+      <img src="{{actor.img}}" alt="Portrait">
+      <div class="header-info">
+        <h1>Runarcana</h1>
+        <h2>Nome do Personagem</h2>
+        <p>Classe e Nível | Origem | Região</p>
+      </div>
     </div>
-  </header>
 
-  <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="attributes">Atributos</a>
-    <a class="item" data-tab="skills">Perícias</a>
-    <a class="item" data-tab="combate">Combate</a>
-    <a class="item" data-tab="magia">Magia</a>
-    <a class="item" data-tab="inventario">Inventário</a>
-    <a class="item" data-tab="anotacoes">Anotações</a>
-  </nav>
+    <div class="tabs">
+      <a class="tab-button active" data-tab="details">Detalhes</a>
+      <a class="tab-button" data-tab="skills">Perícias</a>
+      <a class="tab-button" data-tab="combat">Combate</a>
+      <a class="tab-button" data-tab="spells">Magias</a>
+      <a class="tab-button" data-tab="inventory">Inventário</a>
+      <a class="tab-button" data-tab="notes">Anotações</a>
+    </div>
 
-  <section class="sheet-body">
-    <div class="tab attributes" data-group="primary" data-tab="attributes">
-      <div class="grid grid-3col">
-        {{#each system.attributes as |attr key|}}
-        <div class="attribute flexcol">
-          <label>{{key}}</label>
-          <input type="number" name="system.attributes.{{key}}.value" value="{{attr.value}}" />
-          <span>Mod: {{attr.mod}}</span>
-        </div>
-        {{/each}}
+    <div id="atributos" class="tab-content active">
+      <div class="section stats-grid">
+        <div class="stat-block"><strong>Força</strong><br>{{system.abilities.str.mod}}</div>
+        <div class="stat-block"><strong>Destreza</strong><br>{{system.abilities.dex.mod}}</div>
+        <div class="stat-block"><strong>Constituição</strong><br>{{system.abilities.con.mod}}</div>
+        <div class="stat-block"><strong>Inteligência</strong><br>{{system.abilities.int.mod}}</div>
+        <div class="stat-block"><strong>Sabedoria</strong><br>{{system.abilities.sab.mod}}</div>
+        <div class="stat-block"><strong>Carisma</strong><br>{{system.abilities.cha.mod}}</div>
       </div>
-      <hr/>
-      <div class="flexrow">
-        <label>PV</label>
-        <input type="number" name="system.resources.hp" value="{{system.resources.hp}}" />
-        <label>Mana</label>
-        <input type="number" name="system.resources.mp" value="{{system.resources.hp}}" />
-        <label>CA</label>
-        <input type="number" name="system.ca" value="{{system.ca}}" />
-        <label>Iniciativa</label>
-        <input type="number" name="system.iniciativa" value="{{system.abilities.dex.mod}}" />
+
+      <div class="section resources">
+        <div><strong>PV</strong><br>{{system.resources.hp}}</div>
+        <div><strong>CA</strong><br>{{system.attributes.ca}}</div>
+        <div><strong>Iniciativa</strong><br>{{system.abilities.dex.mod}}</div>
+        <div><strong>Proficiencia</strong><br>{{system.attributes.prof}}</div>
+      </div>
+
+      <div class="section passives">
+        <div><strong>Investigação Passiva</strong><br>{{system.skills.investigation.passive}}</div>
+        <div><strong>Percepção Passiva</strong><br>{{system.skills.perception.passive}}</div>
       </div>
     </div>
 
-    <div class="tab skills" data-group="primary" data-tab="skills">
-      <div class="skills">
-        {{#each system.pericias as |skill key|}}
-        <div class="skill flexrow">
-          <label>{{key}}</label>
-          <input type="number" name="system.skills.{{key}}" value="{{skill.value}}" />
-        </div>
-        {{/each}}
-      </div>
+    <div id="skills" class="tab-content">
+      <p>Conteúdo de Perícias</p>
     </div>
+    <div id="combat" class="tab-content">
+      <p>Conteúdo de Combate</p>
+    </div>
+    <div id="spells" class="tab-content">
+      <p>Conteúdo de Magias</p>
+    </div>
+    <div id="inventory" class="tab-content">
+      <p>Conteúdo de Inventário</p>
+    </div>
+    <div id="notes" class="tab-content">
+      <p>Conteúdo de Anotações</p>
+    </div>
+  </div>
 
-    <div class="tab combate" data-group="primary" data-tab="combate">
-      <div class="flexrow">
-        <label>CD RUNAS</label>
-        <input type="number" name="system.cdRunas" value="{{system.cdRunas}}" />
-        <label>Acerto Runas</label>
-        <input type="number" name="system.acertoRunas" value="{{system.acertoRunas}}" />
-      </div>
-      <div>
-        <label>Resistências:</label>
-        {{#each system.resistencias as |res key|}}
-        <div class="resistencia">
-          <label>{{key}}</label>
-          <input type="text" name="system.resistencias.{{key}}" value="{{res}}" />
-        </div>
-        {{/each}}
-      </div>
-    </div>
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const tabs = document.querySelectorAll('.tab-content');
 
-    <div class="tab magia" data-group="primary" data-tab="magia">
-      <div class="flexrow">
-        <label>CD Magia</label>
-        <input type="number" name="system.cdMagia" value="{{system.cdMagia}}" />
-        <label>Acerto Magia</label>
-        <input type="number" name="system.acertoMagia" value="{{system.acertoMagia}}" />
-      </div>
-      <div>
-        <label>Slots de Magia:</label>
-        {{#each system.spells as |slot level|}}
-        <div class="spell-slot">
-          <label>Nível {{level}}</label>
-          <input type="number" name="system.spells.{{level}}" value="{{slot}}" />
-        </div>
-        {{/each}}
-      </div>
-    </div>
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        tabs.forEach(tab => tab.classList.remove('active'));
 
-    <div class="tab inventario" data-group="primary" data-tab="inventario">
-      <div class="moedas flexrow">
-        <label>PC</label><input name="system.pc" value="{{system.pc}}" />
-        <label>PP</label><input name="system.pp" value="{{system.pp}}" />
-        <label>PE</label><input name="system.pe" value="{{system.pe}}" />
-        <label>PO</label><input name="system.po" value="{{system.po}}" />
-        <label>PL</label><input name="system.pl" value="{{system.pl}}" />
-      </div>
-      <div>
-        <label>Equipamentos</label>
-        <textarea name="system.equipamentos">{{system.equipamentos}}</textarea>
-      </div>
-    </div>
-
-    <div class="tab anotacoes" data-group="primary" data-tab="anotacoes">
-      <label>Alinhamento</label>
-      <input name="system.alinhamento" value="{{system.alinhamento}}" />
-      <label>Idiomas</label>
-      <input name="system.idiomas" value="{{system.idiomas}}" />
-      <label>Proficiencias</label>
-      <textarea name="system.proficiencias">{{system.proficiencias}}</textarea>
-      <label>História</label>
-      <textarea name="system.historia">{{system.historia}}</textarea>
-    </div>
-  </section>
-</form>
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
